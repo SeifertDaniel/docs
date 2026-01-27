@@ -1,0 +1,28 @@
+site_name: Erweiterte Suche
+docs_dir: .
+
+theme:
+  name: material
+  palette:
+    primary: blue
+
+plugins:
+  - macros
+  - include-markdown
+
+nav:
+  - Übersicht: index.md
+  - Editionen: editions/010_Editionen.md
+  - Installation: 
+    - Übersicht: 020_Installation/index.md
+    - Anforderungen: 020_Installation/010_Anforderungen/index.md
+  - Handbuch: manual/010_Inhalte.md
+  - Changelog: changelog.md
+  - Support: support/010_Hilfe-und-Support.md
+
+extra:
+  modulename:    "erweiterte Suche"
+  modulefolder:  "extsearch"
+  metadataident: "d3_extsearch"
+  modcfgident:   "d3_extsearch"
+  composerident: "d3/extsearch"
