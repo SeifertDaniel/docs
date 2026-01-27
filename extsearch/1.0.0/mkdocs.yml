@@ -1,10 +1,15 @@
 site_name: Erweiterte Suche
 docs_dir: .
+use_directory_urls: true
 
 theme:
   name: material
   palette:
     primary: blue
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
 
 plugins:
   - macros
@@ -12,13 +17,18 @@ plugins:
 
 nav:
   - Übersicht: index.md
-  - Editionen: editions/010_Editionen.md
+  - Editionen: editions.md
   - Installation: 
     - Übersicht: 020_Installation/index.md
-    - Anforderungen: 020_Installation/010_Anforderungen/index.md
+    - Anforderungen: 
+      - Systemanforderungen: 020_Installation/010_Anforderungen/index.md
+      - Kompatibilität: 020_Installation/010_Anforderungen/kompatibilitaet.md
+      - Vorbereitungen: 020_Installation/010_Anforderungen/vorbereitungen.md
   - Handbuch: manual/010_Inhalte.md
   - Changelog: changelog.md
-  - Support: support/010_Hilfe-und-Support.md
+  - Support: 
+    - Hilfe und Support: 050_Support/index.md
+    - Lizenzen: 050_Support/licenses.md
 
 extra:
   modulename:    "erweiterte Suche"
