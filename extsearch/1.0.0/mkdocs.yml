@@ -17,17 +17,31 @@ plugins:
 
 nav:
   - Übersicht: index.md
-  - Editionen: editions.md
+  - Editionen: editionen.md
   - Installation: 
-    - Übersicht: 020_Installation/index.md
+    - installation/index.md
     - Anforderungen: 
-      - Systemanforderungen: 020_Installation/010_Anforderungen/index.md
-      - Kompatibilität: 020_Installation/010_Anforderungen/kompatibilitaet.md
-      - Vorbereitungen: 020_Installation/010_Anforderungen/vorbereitungen.md
-  - Handbuch: manual/010_Inhalte.md
+      - Systemanforderungen: installation/anforderungen/index.md
+      - Kompatibilität: installation/anforderungen/kompatibilitaet.md
+      - Vorbereitungen: installation/anforderungen/vorbereitungen.md
+    - Neuinstallation:
+      - installation/anforderungen/index.md
+      - Vorbereitung: installation/anforderungen/vorbereitung.md
+      - Modul hinzufügen: installation/anforderungen/modul_hinzufuegen.md
+      - Verwendung eigener Themes: installation/anforderungen/verwendung_eigener_themes.md
+      - Providerspezifische Installation: installation/anforderungen/providerspezifische_installation.md
+      - Modul im Shop aktivieren: installation/anforderungen/modul_im_shop_aktivieren.md
+      - Shopanpassungen installieren: installation/anforderungen/shopanpassungen_installieren.md
+      - TMP Ordner leeren: installation/anforderungen/tmp-ordner_leeren.md
+      - Lizenz eintragen: installation/anforderungen/lizenz_eintragen.md
+      - Cronjob einrichten: installation/anforderungen/cronjob_einrichten.md
+      - Updatefähigkeit: installation/anforderungen/updatefaehigkeit.md
+  - Handbuch: 
+    - 030_Handbuch/inhalte.md
+    - Ergebnisanalyse: 030_Handbuch/ergebnisanlyse.md
   - Changelog: changelog.md
   - Support: 
-    - Hilfe und Support: 050_Support/index.md
+    - 050_Support/index.md
     - Lizenzen: 050_Support/licenses.md
 
 extra:
