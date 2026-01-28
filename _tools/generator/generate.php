@@ -48,4 +48,12 @@ foreach ($plugins as $plugin) {
     file_put_contents($latestDir . '/index.html', $redirectHtml);
 }
 
+$sitemap = $twig->render('sitemap.xml.twig', [
+    'plugins' => $plugins,
+    'generatedAt' => new DateTimeImmutable(),
+    'baseUrl' => 'https://docs.oxidmodule.com',
+]);
+
+file_put_contents($root . '/sitemap.xml', $sitemap);
+
 echo "Root index.html generated\n";
