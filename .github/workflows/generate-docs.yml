@@ -27,11 +27,11 @@ jobs:
           tools: composer
 
       - name: Install generator dependencies
-        working-directory: tools/generator
+        working-directory: _tools/generator
         run: composer install --no-dev --prefer-dist --no-interaction
 
       - name: Generate documentation indices
-        working-directory: tools/generator
+        working-directory: _tools/generator
         run: php generate.php
 
       - name: Commit generated files
