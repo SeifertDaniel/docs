@@ -39,6 +39,11 @@ final class PluginRepository
             );
         }
 
+        usort(
+            $result,
+            fn (Plugin $a, Plugin $b) => strcasecmp($a->name, $b->name)
+        );
+
         return $result;
     }
 
