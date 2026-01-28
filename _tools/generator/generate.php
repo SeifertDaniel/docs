@@ -34,6 +34,18 @@ foreach ($plugins as $plugin) {
 
     $target = $root . '/' . $plugin->slug . '/index.html';
     file_put_contents($target, $html);
+
+    // latest-Redirect erzeugen
+    $latestDir = $root . '/' . $plugin->slug . '/latest';
+    if (!is_dir($latestDir)) {
+        mkdir($latestDir, 0775, true);
+    }
+
+    $redirectHtml = $twig->render('redirect.html.twig', [
+        'target' => '/' . $plugin->slug . '/' . $plugin->latest . '/',
+    ]);
+
+    file_put_contents($latestDir . '/index.html', $redirectHtml);
 }
 
 echo "Root index.html generated\n";
