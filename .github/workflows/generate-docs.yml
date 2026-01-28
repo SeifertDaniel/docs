@@ -1,5 +1,8 @@
 name: Generate Documentation Index
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -38,7 +41,12 @@ jobs:
         run: |
           git config user.name "docs-bot"
           git config user.email "docs-bot@users.noreply.github.com"
-          git add index.html */index.html
+          git add \
+            index.html \
+            sitemap.xml \
+            _assets \
+            */index.html \
+            */latest/index.html
           git diff --cached --quiet || git commit -m "Update documentation indices"
 
       - name: Push changes
