@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>{{ plugin.name }} – Versionen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body { font-family: system-ui, sans-serif; margin: 3rem; background: #fafafa; }
+        .card { background: #fff; padding: 1.25rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,.05); }
+        .latest { border-left: 4px solid #005fcc; }
+        ul { list-style: none; padding: 0; }
+        li { margin: .35rem 0; }
+        a { text-decoration: none; color: #005fcc; }
+        .meta { font-size: .85rem; color: #666; margin-bottom: .75rem; }
+    </style>
+</head>
+<body>
+
+<h1>{{ plugin.name }}</h1>
+<div class="meta">
+    Latest: {{ plugin.latest }} · Aktualisiert: {{ plugin.updatedAt|date('Y-m-d') }}
+</div>
+
+<div class="card latest">
+    <strong>Latest</strong><br>
+    <a href="/{{ plugin.slug }}/{{ plugin.latest }}/">
+        {{ plugin.latest }}
+    </a>
+</div>
+
+<h2>Alle Versionen</h2>
+<ul>
+    {% for version in plugin.versions %}
+        <li>
+            <a href="/{{ plugin.slug }}/{{ version }}/">
+                {{ version }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+<p><a href="/">? Zur Übersicht</a></p>
+
+</body>
+</html>

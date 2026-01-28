@@ -26,4 +26,14 @@ $html = $twig->render('root.html.twig', [
 
 file_put_contents($root . '/index.html', $html);
 
+// Plugin-Index-Seiten rendern
+foreach ($plugins as $plugin) {
+    $html = $twig->render('plugin.html.twig', [
+        'plugin' => $plugin,
+    ]);
+
+    $target = $root . '/' . $plugin->slug . '/index.html';
+    file_put_contents($target, $html);
+}
+
 echo "Root index.html generated\n";
