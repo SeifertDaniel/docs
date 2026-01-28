@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/SemVersion.php';
+namespace Docs\Generator;
 
 final class PluginScanner
 {
@@ -10,7 +10,7 @@ final class PluginScanner
     public function __construct(string $root)
     {
         if (!is_dir($root)) {
-            throw new RuntimeException("Invalid root directory: {$root}");
+            throw new \RuntimeException("Invalid root directory: {$root}");
         }
         $this->root = rtrim($root, DIRECTORY_SEPARATOR);
     }
@@ -41,7 +41,6 @@ final class PluginScanner
                 continue;
             }
 
-            // absteigend sortieren (latest zuerst)
             usort(
                 $versions,
                 fn (SemVersion $a, SemVersion $b) => $b->compare($a)
@@ -72,8 +71,7 @@ final class PluginScanner
 
             try {
                 $versions[] = SemVersion::fromString($dir);
-            } catch (InvalidArgumentException) {
-                // keine gültige Version ? ignorieren
+            } catch (\InvalidArgumentException) {
                 continue;
             }
         }

@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
 
-require __DIR__ . '/src/PluginScanner.php';
+require __DIR__ . '/vendor/autoload.php';
+
+use Docs\Generator\PluginScanner;
 
 $root = realpath(__DIR__ . '/../../');
 if ($root === false) {
@@ -14,9 +16,5 @@ $plugins = $scanner->scan();
 
 foreach ($plugins as $plugin => $versions) {
     echo "Plugin: {$plugin}\n";
-    echo "  latest: {$versions[0]}\n";
-    foreach ($versions as $v) {
-        echo "   - {$v}\n";
-    }
-    echo "\n";
+    echo "  latest: {$versions[0]}\n\n";
 }

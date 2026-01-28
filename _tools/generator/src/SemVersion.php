@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace Docs\Generator;
+
 final class SemVersion
 {
     private int $major;
@@ -27,7 +29,7 @@ final class SemVersion
     public static function fromString(string $version): self
     {
         if (!preg_match('/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/', $version, $m)) {
-            throw new InvalidArgumentException("Invalid version string: {$version}");
+            throw new \InvalidArgumentException("Invalid version string: {$version}");
         }
 
         return new self(
