@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Docs\Generator\PluginScanner;
+use Docs\Generator\PluginRepository;
 
 $root = realpath(__DIR__ . '/../../');
 if ($root === false) {
@@ -11,10 +11,11 @@ if ($root === false) {
     exit(1);
 }
 
-$scanner = new PluginScanner($root);
-$plugins = $scanner->scan();
+$repo = new PluginRepository($root);
+$plugins = $repo->getAll();
 
-foreach ($plugins as $plugin => $versions) {
-    echo "Plugin: {$plugin}\n";
-    echo "  latest: {$versions[0]}\n\n";
+foreach ($plugins as $plugin) {
+    echo "{$plugin->name} ({$plugin->slug})\n";
+    echo "  latest: {$plugin->latest}\n";
+    echo "  updated: {$plugin->updatedAt->format('Y-m-d H:i:s')}\n\n";
 }
