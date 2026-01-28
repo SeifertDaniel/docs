@@ -4,6 +4,9 @@ declare(strict_types=1);
 require __DIR__ . '/vendor/autoload.php';
 
 use Docs\Generator\PluginRepository;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+use DateTimeImmutable;
 
 $root = realpath(__DIR__ . '/../../');
 if ($root === false) {
