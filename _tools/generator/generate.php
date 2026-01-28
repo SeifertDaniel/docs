@@ -14,8 +14,16 @@ if ($root === false) {
 $repo = new PluginRepository($root);
 $plugins = $repo->getAll();
 
-foreach ($plugins as $plugin) {
-    echo "{$plugin->name} ({$plugin->slug})\n";
-    echo "  latest: {$plugin->latest}\n";
-    echo "  updated: {$plugin->updatedAt->format('Y-m-d H:i:s')}\n\n";
-}
+$loader = new FilesystemLoader(__DIR__ . '/templates/twig');
+$twig = new Environment($loader, [
+    'cache' => false,
+]);
+
+$html = $twig->render('root.html.twig', [
+    'plugins' => $plugins,
+    'generatedAt' => new DateTimeImmutable(),
+]);
+
+file_put_contents($root . '/index.html', $html);
+
+echo "Root index.html generated\n";
