@@ -5,18 +5,18 @@
     <title>{{ plugin.name }} – Versionen</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="/_assets/style.css">
+    <link rel="stylesheet" href="../_assets/style.css">
 </head>
 <body>
 
 <h1>{{ plugin.name }}</h1>
 <div class="meta">
-    Latest: {{ plugin.latest }} · Aktualisiert: {{ plugin.updatedAt|date('Y-m-d') }}
+    Aktuellste Version: {{ plugin.latest }} - Aktualisiert: {{ plugin.updatedAt|date('Y-m-d') }}
 </div>
 
 <div class="card latest">
-    <strong>Latest</strong><br>
-    <a href="/{{ plugin.slug }}/{{ plugin.latest }}/">
+    <strong>Aktuellste</strong><br>
+    <a href="./{{ plugin.slug }}/latest/">
         {{ plugin.latest }}
     </a>
 </div>
@@ -25,14 +25,14 @@
 <ul>
     {% for version in plugin.versions %}
         <li>
-            <a href="/{{ plugin.slug }}/{{ version }}/">
+            <a href="./{{ plugin.slug }}/{{ version }}/">
                 {{ version }}
             </a>
         </li>
     {% endfor %}
 </ul>
 
-<p><a href="/">? Zur Übersicht</a></p>
+<p><a href="./">Zur &Uuml;bersicht</a></p>
 
 </body>
 </html>

@@ -5,25 +5,25 @@
     <title>Plugin Dokumentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="/_assets/style.css">
+    <link rel="stylesheet" href="./_assets/style.css">
 </head>
 
 <body>
 
-<h1>Plugin-Dokumentation</h1>
-<p>Übersicht aller verfügbaren Plugins.</p>
+<h1>Dokumentation</h1>
+<p>&uuml;bersicht aller verf&uuml;gbaren Module.</p>
 
 <div class="plugins">
     {% for plugin in plugins %}
         <div class="plugin">
             <h2>{{ plugin.name }}</h2>
             <div class="meta">
-                Latest: {{ plugin.latest }}<br>
+                Aktuellste: {{ plugin.latest }}<br>
                 Aktualisiert: {{ plugin.updatedAt|date('Y-m-d') }}
             </div>
             <div class="actions">
-                <a class="primary" href="/{{ plugin.slug }}/{{ plugin.latest }}/">Latest</a>
-                <a class="secondary" href="/{{ plugin.slug }}/">Alle Versionen</a>
+                <a class="primary" href="./{{ plugin.slug }}/latest/" title="Weiterleitung zur aktuellsten Version">Aktuellste Version</a>
+                <a class="secondary" href="./{{ plugin.slug }}/">Alle Versionen</a>
             </div>
         </div>
     {% endfor %}
