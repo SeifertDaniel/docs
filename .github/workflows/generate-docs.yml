@@ -13,7 +13,12 @@ on:
       - '!_*/**'
       - '!.github/**'
 
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      download_docs:
+        description: "Download documentation instead of deploying"
+        required: false
+        default: "false"
 
 jobs:
   generate:
@@ -36,6 +41,13 @@ jobs:
       - name: Generate documentation indices
         working-directory: _tools/generator
         run: php generate.php
+
+      - name: Upload documentation artifact
+        if: ${{ github.event.inputs.download_docs == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-html
+          path: .
 
       - name: Commit generated files
         run: |
