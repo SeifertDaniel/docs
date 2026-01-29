@@ -26,7 +26,6 @@ $html = $twig->render('root.html.twig', [
     'plugins' => $plugins,
     'generatedAt' => new DateTimeImmutable(),
 ]);
-
 file_put_contents($root . '/index.html', $html);
 
 // Plugin-Index-Seiten rendern
@@ -47,7 +46,6 @@ foreach ($plugins as $plugin) {
     $redirectHtml = $twig->render('redirect.html.twig', [
         'target' => '/' . $plugin->slug . '/' . $plugin->latest . '/',
     ]);
-
     file_put_contents($latestDir . '/index.html', $redirectHtml);
 }
 
@@ -56,7 +54,6 @@ $sitemap = $twig->render('sitemap.xml.twig', [
     'generatedAt' => new DateTimeImmutable(),
     'baseUrl' => 'https://docs.oxidmodule.com',
 ]);
-
 file_put_contents($root . '/sitemap.xml', $sitemap);
 
-echo "Root index.html generated\n";
+echo "Base page generated\n";
