@@ -22,6 +22,8 @@ on:
 
 jobs:
   generate:
+    if: >
+      !contains(github.event.head_commit.message, 'Update documentation indices')
     runs-on: ubuntu-latest
 
     steps:
