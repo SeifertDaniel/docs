@@ -49,17 +49,35 @@ jobs:
           name: documentation-html
           path: .
 
-      - name: Commit generated files
+      - name: Commit and push generated files
+        shell: bash
         run: |
+          set -euo pipefail
+          
+          BRANCH="${GITHUB_REF_NAME}"
+          REPO="${{ vars.DOCS_REPO }}"
+          GIT_USER="${{ secrets.GITEA_USER }}"
+          TOKEN="${{ secrets.GITEA_TOKEN }}"
+          
+          echo "::add-mask::${TOKEN}"
+          
+          AUTH_REPO="$(echo "$REPO" | sed "s#https://#https://${GIT_USER}:${TOKEN}@#")"
+
           git config user.name "docs-bot"
           git config user.email "docs-bot@users.noreply.github.com"
+          
           git add -A \
             index.html \
             sitemap.xml \
             _assets \
             */index.html \
             */latest/index.html
-          git diff --cached --quiet || git commit -m "Update documentation indices"
+    
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
 
-      - name: Push changes
-        run: git push
+          git commit -m "Update documentation indices"
+          git remote add gitea "$AUTH_REPO" || true
+          git push gitea HEAD:"$BRANCH"
