@@ -1,0 +1,114 @@
+"erweiterte Suche"
+
+Diese Modulversion stellt folgende Funktionen zur Verfügung:
+
+- Kategorie-, Marken- und Lieferantenlisten
+    Aus allen Suchtreffern werden die betreffenden Kategorien und Marken aufgelistet,
+    durch Links darauf können die Suchergebnisse eingeschränkt werden
+    Optionen:
+    - Listen können alphabetisch bzw. nach Treffern sortiert werden
+    - Listen können ab X Einträgen eingeschränkt werden
+    - Listen können bei nur einem Eintrag ausgeblendet werden
+    - Kategorien können einzeln von Verwendung ausgeschlossen werden
+    - Nicht-Hauptkategorien können von der Verwendung ausgeschlossen werden (Version 6.2)
+    - Filter auch in Kategorien, Hersteller- sowie Markenlisten (Version 5.5)
+    - Mehrfachauswahl der zu filternden Listen und Werte (Version 5.6)
+
+- fehlertolerante Suche nach Semantic (Version 3.10)
+    Es werden Suchtreffer gezeigt, die einen ähnlichen Sinn haben.
+    - Editor für Semantic-Suche (Version 3.11)
+
+- fehlertolerante Suche nach Phonetic mit Singular/Plural-Abgleich
+    Es werden Suchtreffer gezeigt, die einen ähnlichen Klang haben.
+    Optionen:
+    - diese Treffer werden nur angezeigt, wenn sonst keine Ergebnisse gefunden werden
+    - diese Treffer werden auch angezeigt, wenn nur wenige Ergebnisse gefunden werden (Anzahl definierbar)
+    - Definierung eigener für die Suche genutzter Felder möglich
+    - auch bei kurzen Suchworten wird eine vereinfachte Ähnlichkeitssuche verwendet (Version 3.8)
+    - Phoentic-Syntax mit und ohne Vokalverwendung einstellbar (Version 5.4)
+
+- automatische Prioritätensortierung
+    Je nachdem,in welchem Datenbankfeld die Suchbegriffe gefunden werden, sind die Treffer sortiert.
+    Artikel können in 3 Stufen nach Ihrer Wichtigkeit sortiert werden um die Position in Suchergebnissen zu beeinflussen (Version 3.10)
+    Die Relevanz unterscheidet sich weiterhin, ob nur Wortteile oder das einzeln stehende Wort gefunden wird (Version 5.2)
+
+- Direktsuche
+    Wenn in der Trefferliste nur ein Artikel oder Text gefunden wird, wechselt der Shop direkt zur Detailseite des gefundenen Artikels bzw. des Textes.
+
+- Schnellsuche (Suchergebnisse schon während der Eingabe als ToolTip)
+    Bei der Eingabe einzelner Zeichen des Suchwortes werden im Hintergrund schon die ersten Ergebnisse gelistet
+    und per Ajax dargestellt. Durch Anklicken der angezeigten Artikel wechselt man auf die Detailseite des Artikels.
+    Optionen:
+    - durch Templatesteuerung sind gestalterisch und inhaltlich keine Grenzen gesetzt. Denkbar wäre zum Beispiel die Anzeige der Artikelbilder
+      oder auch die Möglichkeit der Direktbestellung in den Ergebnissen der Schnellsuche
+    - sucht nach Variantenartikeln
+    - in Verbindung mit der Suche nach Artikelnummern eine praktikable Möglichkeit, über Katalogauswahlen Bestellungen anzulegen
+    - bedienbar mit Tastatur und Zeigegerät
+    - auch fehlertolerant (Version 3.7)
+    - zeigt optional auch Kategorien, Marken und Lieferanten (Version 3.12)
+
+- Variantensuche
+    - Statt nur nach regulären Artikeln zu suchen, kann damit auch nach Variantenartikeln gesucht werden. Diese Option funktioniert auch in Verbindung
+      mit der fehlertoleranten Suche
+    - es ist einstellbar, ob die Variante selbst oder deren Vaterartikel gezeigt werden soll
+
+- Kategorie-, Marken-, Lieferantensuche
+    - Wird eine dem Suchbegriff benannte Kategorie, Marke oder Lieferant gefunden, werden deren Artikel in die Trefferliste aufgenommen (optional ab Version 3.9)
+    - Kategorien können einzeln aus dieser Suche ausgeschlossen werden (Version 5.4)
+
+- Contentsuche
+    definierte CMS-Bausteine können durchsucht werden
+
+- Attributsfilterung
+    - Treffer können nach zugeordneten Attributen ausgefiltert werden (Version 3.7)
+    - Filter auch in Kategorien, Hersteller- sowie Markenlisten (Version 5.5)
+    - Mehrfachauswahl der zu filternden Attributen und Werten (Version 5.1)
+    - filterbare Attribute können Kategorie-, Hersteller- und Lieferantenspezifisch aktiviert werden (Version 6.2)
+
+- Preisspannenselektion möglich (Version 3.9)
+    - Filter auch in Kategorien, Hersteller- sowie Markenlisten (Version 5.5)
+    - Anzeige als statische Spannen über Dropdown als auch
+    - Anzeige als Schieberegler
+
+- Trefferhervorhebung
+    Die gesuchten Begriffe werden (sofern angezeigt) in den Treffern optisch hervorgehoben. Durch Templatesteuerung sind gestalterisch und funktionell
+    keine Grenzen gesetzt
+
+- Browsereinbindung
+    Der Shop bindet sich in aktuellen Browser als Suchmaschine mit eigenem Namen und Icon ein. Er bietet die One-Click-Installation sowie die
+    Installation per Link an, EE: separate Einbindung für jeden Shopmandanten
+
+- Mehrsprachigkeit
+    Konfigurieren Sie das Modul für jede Ihrer Shopsprachen separat. Weiterhin kann für jede Sprache ein eigener Artikelindex angelegt werden, so daß die Suche
+    sprachoptimiert funktioniert
+
+- weitere Suchfelder sind definierbar und mit unterschiedlichen Suchtypen wählbar
+
+- für Trefferliste wird eine Indexliste erstellt, Treffer können nach Anfangsbuchstaben ausgewählt werden
+
+- zeichengenaue Suche
+
+- interaktive Suche bei Doppelklick auf oder Markieren eines oder mehrerer Worte
+
+- Suchsyntax (Aus- und Einschluß von Suchbegriffen) möglich
+
+- Suchhistorie
+    Erfolglose und erfolgreiche Suchanfragen werden für eine individuelle Nachbearbeitung mitgeloggt.
+
+- Artikelsuche im Admin nach Varianten möglich (Version 3.8)
+
+- Individualisierung und Erweiterung möglich, da Standard-Shopmodul
+
+- Verwendung ohne Templateanpassung im originalen OXID Apex- und Wave-Theme
+
+- statistische Auswertung der Suchanfragen
+
+- Unterstützung für diese Themes:
+  - OXID Apex
+  - OXID Wave
+  - konfigurierbares Theme-Mapping für abweichende Themes (ab Version 5.6.2.1)
+
+- Filter nach Verfügbarkeit (in zukünftigen Versionen)
+
+
+Alle Funktionen sind über einen eigenen Bereich im Shopadmin zu verwalten.
