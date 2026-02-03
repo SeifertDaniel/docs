@@ -4,16 +4,36 @@ use_directory_urls: true
 
 theme:
   name: material
+  language: de
+  logo: assets/logo.png
   palette:
-    primary: blue
+      # Palette toggle for light mode
+    - scheme: default
+      primary: blue
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
   features:
     - navigation.tabs
-    - navigation.sections
+    - navigation.tabs.sticky
+    - navigation.path
     - toc.integrate
+
+extra_css:
+  - assets/extra.css
 
 plugins:
   - macros
   - include-markdown
+  - search
 
 nav:
   - Übersicht: index.md
@@ -72,3 +92,7 @@ extra:
   metadataident: "d3_extsearch"
   modcfgident:   "d3_extsearch"
   composerident: "d3/extsearch"
+  homepage: https://www.d3data.de/
+
+copyright: >
+  Copyright &copy; 2026 D3 Data Development - Inh. Thomas Dartsch
