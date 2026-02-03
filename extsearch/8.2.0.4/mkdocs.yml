@@ -1,0 +1,103 @@
+site_name: Erweiterte Suche
+docs_dir: .
+use_directory_urls: true
+
+theme:
+  name: material
+  language: de
+  logo: assets/logo.svg
+  palette:
+      # Palette toggle for light mode
+    - scheme: default
+      primary: blue
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - toc.integrate
+
+extra_css:
+  - assets/extra.css
+
+plugins:
+  - macros
+  - include-markdown
+  - search:
+      lang: de
+
+nav:
+  - Übersicht: index.md
+  - Editionen: editionen.md
+  - Installation: 
+    - installation/index.md
+    - Anforderungen: 
+      - Systemanforderungen: installation/anforderungen/index.md
+      - Kompatibilität: installation/anforderungen/kompatibilitaet.md
+      - Vorbereitungen: installation/anforderungen/vorbereitungen.md
+    - Neuinstallation:
+      - installation/neuinstallation/index.md
+      - Vorbereitung: installation/neuinstallation/vorbereitung.md
+      - Modul hinzufügen: installation/neuinstallation/modul_hinzufuegen.md
+      - Verwendung eigener Themes: installation/neuinstallation/verwendung_eigener_themes.md
+      - Providerspezifische Installation: installation/neuinstallation/providerspezifische_installation.md
+      - Modul im Shop aktivieren: installation/neuinstallation/modul_im_shop_aktivieren.md
+      - Shopanpassungen installieren: installation/neuinstallation/shopanpassungen_installieren.md
+      - TMP Ordner leeren: installation/neuinstallation/tmp-ordner_leeren.md
+      - Lizenz eintragen: installation/neuinstallation/lizenz_eintragen.md
+      - Cronjob einrichten: installation/neuinstallation/cronjob_einrichten.md
+      - Updatefähigkeit: installation/neuinstallation/updatefaehigkeit.md
+    - Update:
+      - installation/update/index.md
+      - Modul deaktivieren: installation/update/modul_deaktivieren.md
+      - Dateien erneuern: installation/update/dateien_erneuern.md
+      - Verwendung eigener Themes: installation/update/verwendung_eigener_themes.md
+      - providerspezifische Installation: installation/update/providerspezifische_installation.md
+      - Modulinformationen aktualisieren: installation/update/modulinformationen_aktualisieren.md
+      - Shopanpassungen installieren: installation/update/shopanpassungen_installieren.md
+      - TMP Ordner leeren: installation/update/tmp-ordner_leeren.md
+      - Lizenzschlüssel aktualisieren: installation/update/lizenzschluessel_aktualisieren.md
+      - Erweiterungen anpassen: installation/update/erweiterungen_anpassen.md
+    - Installationshinweise:
+      - Cachevermeidung: installation/installationshinweise/cachevermeidung.md
+    - Deinstallation:
+      - Modulerweiterungen deaktivieren: installation/deinstallation/modulerweiterungen_deaktivieren_und_entfernen.md
+      - Modul deaktivieren: installation/deinstallation/modul_deaktivieren.md
+      - Modul aus der Installation entfernen: installation/deinstallation/modul_aus_der_installation_entfernen.md
+      - Dateien löschen: installation/deinstallation/dateien_loeschen.md
+      - Datenbank bereinigen: installation/deinstallation/datenbank_bereinigen.md
+      - TMP Ordner leeren: installation/deinstallation/tmp-ordner_leeren.md
+    - Installationsprüfung: installation/installationspruefung.md
+    - Schnellstart: installation/schnellstart.md
+  - Handbuch: 
+    - 030_Handbuch/inhalte.md
+    - Ergebnisanalyse: 030_Handbuch/ergebnisanlyse.md
+  - Changelog: changelog.md
+  - Support: 
+    - 050_Support/index.md
+    - Lizenzen: 050_Support/licenses.md
+
+extra:
+  modulename:    "erweiterte Suche"
+  modulefolder:  "extsearch"
+  metadataident: "d3_extsearch"
+  modcfgident:   "d3_extsearch"
+  composerident: "d3/extsearch"
+  homepage: https://www.d3data.de/
+  generator: false
+
+copyright: >
+  Copyright &copy; 2026 D3 Data Development - Inh. Thomas Dartsch
+
+markdown_extensions:
+  - tables
