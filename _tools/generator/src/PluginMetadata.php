@@ -29,6 +29,12 @@ final class PluginMetadata
             return basename($pluginPath);
         }
 
-        return trim($data['site_name']);
+        $name = trim($data['site_name']);
+
+        if (str_contains($name, '·')) {
+            $name = trim(explode('·', $name, 2)[0]);
+        }
+
+        return $name;
     }
 }
