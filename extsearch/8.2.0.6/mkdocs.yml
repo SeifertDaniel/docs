@@ -1,4 +1,4 @@
-site_name: Erweiterte Suche · dev_8.x_buildDocs
+site_name: Erweiterte Suche · 8.2.0.6
 docs_dir: .
 use_directory_urls: true
 
@@ -95,7 +95,7 @@ extra:
   composerident: "d3/extsearch"
   homepage: https://www.d3data.de/
   generator: false
-  doc_version: "dev_8.x_buildDocs"
+  doc_version: "8.2.0.6"
   last_updated: "03.02.2026"
 
 copyright: >
