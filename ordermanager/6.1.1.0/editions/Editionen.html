@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html class="no-js" lang="de">
+<head>
+    <title>Editionen -  Auftragsmanager</title>
+        <meta name="description" content="">
+    <meta name="author" content="D³ Data Development">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="../themes/d3/img/favicon.png" type="image/x-icon">
+
+    <!-- Mobile -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font -->
+    
+    <!-- CSS -->
+    <link href='../themes/d3/css/theme-blue.min.css' rel='stylesheet' type='text/css'><link href='../themes/d3/css/d3.css' rel='stylesheet' type='text/css'>
+            <!-- Tipue Search -->
+        <link href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+    <script src="../themes/d3/js/html5shiv-3.7.3.min.js"></script>
+    <![endif]-->
+</head>
+<body class=" ">
+<div class="Columns content">
+    <aside class="Columns__left Collapsible">
+        <button type="button" class="Button Collapsible__trigger">
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+            <span class="Collapsible__trigger__bar"></span>
+        </button>
+
+        <a class="Brand" href="../index.html"><i class='fab fa-d3 d3fa-color-blue'></i> Auftragsmanager</a>
+
+    <div class="Search">
+        <svg class="Search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451 451">
+            <path d="M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"/>
+        </svg>
+        <input type="search" id="tipue_search_input" class="Search__field" placeholder="Suchen..." autocomplete="on"
+               results=25 autosave=text_search>
+    </div>
+
+        <div class="Collapsible__content">
+            <!-- Navigation -->
+            <ul class='Nav'><li class='Nav__item Nav__item--active'><a href="../editions/Editionen.html">Editionen</a></li></ul>
+            <div class='versionselector'>Version wechseln: 
+<select onchange="window.location.href=this.options[this.selectedIndex].value" size="1">
+
+<?php
+    $versionpath = implode("/", array_slice(explode("/", $_SERVER['SCRIPT_NAME']), 2));
+    $modulepath = implode("/", array_slice(explode("/", $_SERVER['SCRIPT_NAME']), 0, 2));
+    $path = str_replace($versionpath, "", $_SERVER['SCRIPT_FILENAME']);
+    $paths = explode('/', $versionpath);
+    $currpath = $paths[0];
+    
+    $dirs = array_filter(glob($path . '/*'), 'is_dir');
+    arsort($dirs);
+
+    foreach ($dirs as $dir) {
+        $dir = str_replace($path.'/', '', $dir);
+        $selected = ($dir === $currpath) ? 'selected="selected"' : "";
+        echo '<option value="'. $modulepath .'/'. $dir .'" '. $selected .'>'. $dir .'</option>';
+    }
+?>
+</select></div>
+
+
+            <div class="Links">
+                <hr/>
+                <a href="https://www.oxidmodule.com" target="_blank">Shop</a><br />
+                <a href="https://blog.oxidmodule.com" target="_blank">Blog</a><br />
+                <a href="https://faq.d3data.de" target="_blank">FAQ</a><br />
+                <a href="https://docs.oxidmodule.com" target="_blank">Dokumentationen</a><br />
+                <a href="https://support.oxidmodule.com" target="_blank">D³ Support Center</a><br />
+                <a href="https://www.oxidmodule.com/kontakt" target="_blank">Kontakt</a><br />
+                <a href="https://www.oxidmodule.com/impressum" target="_blank">Impressum</a><br />
+                            </div>
+
+            
+                
+                        </div>
+    </aside>
+    <div class="Columns__right Columns__right--full">
+        <div class="Columns__right__content">
+            <div class="doc_content">
+                <article class="Page">
+
+    <div class="Page__header">
+        <h1><a href="../editions/Editionen.html">Editionen</a></h1>
+                <span class="ModifiedDate">
+                        21.01.2025        </span>
+                    </div>
+
+    <div class="s-content">
+        <p>Das Modul <strong><i class='fab fa-d3 d3fa-color-blue'></i> Auftragsmanager</strong> erhalten Sie in verschiedenen Editionen mit unterschiedlichem Funktionsumfang. Die hier nicht genannten Modulfunktionen sind in allen Editionen gleich.</p>
+<h2 id="page_Funktionsumfang">Funktionsumfang</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">Free-Edition</th>
+<th align="center">Standard-Edition</th>
+<th align="center">Premium-Edition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anzahl möglicher Aufgaben</td>
+<td align="center">5</td>
+<td align="center">25</td>
+<td align="center">beliebig</td>
+</tr>
+<tr>
+<td>vor-Ausführung-Script möglich</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>nach-Ausführung-Script möglich</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+</tbody>
+</table>
+<h2 id="page_Aufgabenausloser">Aufgabenauslöser</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">Free-Edition</th>
+<th align="center">Standard-Edition</th>
+<th align="center">Premium-Edition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>periodischer Start per Cronjob</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>manueller Start direkt an den Bestellungen</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>beim Bestellabschluss durch den Kunden</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>beim Speichern der Bestellung</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+</tbody>
+</table>
+<h2 id="page_Bedingungen">Bedingungen</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">Free-Edition</th>
+<th align="center">Standard-Edition</th>
+<th align="center">Premium-Edition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ab (inklusive) Bestellnummer</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>bis (inklusive) Bestellnummer</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Zeitraum (1)</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Zeitraum (2)</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>nicht gesetztes...</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>aus diesen Wochentagen</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>bei diesen Zahlarten</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>bei diesen Versandarten</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>bei gesetztem Trackingcode</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>bei stornierter Bestellung</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>bei nicht stornierter Bestellung</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>bei stornierten Artikeln innerhalb der Bestellung</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Bestellsumme</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>hat Rechnungsnummer erhalten</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Transaktionsstatus</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>bei verwendeter Währung</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>bei verwendeter Sprache</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>in einem der Ordner</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>nicht in einem der Ordner</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>enthält selektierte Artikel (1)</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>enthält selektierte Artikel (2)</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>enthält nicht selektierte Artikel (1)</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>enthält nicht selektierte Artikel (2)</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Suchmuster zur Filterung der Mailadresse</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Liefer- bzw. Rechnungsadresse aus Land</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Kunde ist in Gruppe</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Kunde ist nicht in Gruppe</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Methode des Auftragslistenobjekts ausführen</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Bestellungsfeld auf Wert prüfen</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>andere Aufgabe</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+</tbody>
+</table>
+<h2 id="page_Aktionen">Aktionen</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">Free-Edition</th>
+<th align="center">Standard-Edition</th>
+<th align="center">Premium-Edition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E-Mail senden</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Aufträge in Ordner verschieben</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Aufträge stornieren</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Versendet-am Datum setzen</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Bezahlt-am Datum setzen</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Versandkosten ändern</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Rabatte ändern</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>PDF generieren (aus OXID Invoice PDF)</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>PDF generieren (aus <i class='fab fa-d3 d3fa-color-blue'></i> PDF Dokumente)</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Kundengruppe zuordnen / entfernen</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Export in Liste</td>
+<td align="center"></td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Feld mit Wert füllen</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Individualaktionen / -bedingungen definieren</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td>Push-Notification senden</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">X</td>
+</tr>
+</tbody>
+</table>
+    </div>
+
+        <nav>
+        <ul class="Pager">
+            <li class=Pager--prev><a href="../changelog/Changelog.html">Zurück</a></li>            <li class=Pager--next><a href="../installation/Installation.html">Weiter</a></li>        </ul>
+    </nav>
+    </article>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JS -->
+<script src="../themes/d3/js/jquery-1.11.3.min.js"></script><script src="../themes/d3/js/highlight.pack.js"></script><script src="../themes/d3/js/daux.js"></script><script src="../themes/d3/js/fontawesome-all.js"></script>
+    <!-- Tipue Search -->
+    <script type="text/javascript" src="../tipuesearch/tipuesearch.js"></script>
+
+    <script>
+        window.onunload = function(){}; // force $(document).ready to be called on back/forward navigation in firefox
+        $(function() {
+            tipuesearch({
+                'base_url': '../'
+            });
+        });
+    </script>
+
+</body>
+</html>
