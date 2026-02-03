@@ -7,6 +7,14 @@
     </url>
 
             <url>
+            <loc>https://docs.oxidmodule.com/ordermanager/</loc>
+            <lastmod>2026-02-03</lastmod>
+        </url>
+        <url>
+            <loc>https://docs.oxidmodule.com/ordermanager/latest/</loc>
+            <lastmod>2026-02-03</lastmod>
+        </url>
+            <url>
             <loc>https://docs.oxidmodule.com/extsearch/</loc>
             <lastmod>2026-02-03</lastmod>
         </url>
