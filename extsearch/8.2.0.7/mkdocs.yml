@@ -106,3 +106,4 @@ copyright: >
 markdown_extensions:
   - tables
   - admonition
+  - toc
