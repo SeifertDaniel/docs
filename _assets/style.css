@@ -104,8 +104,12 @@ body {
 /* ===== Main Content ===== */
 
 .md-main {
-    flex: 1;                 /* sorgt für Sticky Footer */
+    flex: 1;
     padding: 2rem 0;
+}
+
+.md-main h1 {
+    font-family: "Roboto", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
 }
 
 .md-intro {
