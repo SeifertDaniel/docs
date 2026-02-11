@@ -9,7 +9,7 @@
 <body>
 
 <header class="md-header">
-    <div class="md-header__inner">
+    <div class="container">
         <div class="md-header__title">
             Modul-Dokumentation
         </div>
@@ -17,7 +17,7 @@
 </header>
 
 <main class="md-main">
-    <div class="md-main__inner">
+    <div class="container">
 
         <h1>Verfügbare Module</h1>
         <p class="md-intro">
@@ -37,8 +37,7 @@
                 <div class="module-actions">
                     <a class="md-button md-button--primary"
                        href="./{{ plugin.slug }}/latest/"
-                       title="Weiterleitung zur aktuellsten Version"
-                       >
+                       title="Weiterleitung zur aktuellsten Version">
                         Aktuellste Version
                     </a>
 
@@ -54,8 +53,10 @@
     </div>
 </main>
 
-<footer>
-    Generiert am {{ generatedAt|date('Y-m-d H:i:s') }}
+<footer class="md-footer">
+    <div class="container">
+        Generiert am {{ generatedAt|date('Y-m-d H:i:s') }}
+    </div>
 </footer>
 
 </body>

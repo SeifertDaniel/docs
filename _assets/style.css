@@ -1,17 +1,38 @@
-/* Base Material-like Layout */
+/* ===== Base Layout ===== */
+
+html, body {
+    height: 100%;
+}
 
 body {
     margin: 0;
     font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     background-color: #f5f7fa;
     color: #2e3033;
+
+    /* Sticky Footer Layout */
+    display: flex;
+    flex-direction: column;
 }
 
+/* ===== Shared Container (61rem Content Width) ===== */
+
+.container {
+    max-width: 61rem;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+/* ===== Header ===== */
+
 .md-header {
-    background-color: #1e5fae; /* Mittelblau */
+    background-color: #2094f3;
     color: #ffffff;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.md-header .container {
+    padding: 1rem 1.25rem;
 }
 
 .md-header__title {
@@ -19,13 +40,11 @@ body {
     font-weight: 500;
 }
 
-.md-main {
-    padding: 2rem;
-}
+/* ===== Main Content ===== */
 
-.md-main__inner {
-    max-width: 1200px;
-    margin: 0 auto;
+.md-main {
+    flex: 1;                 /* sorgt für Sticky Footer */
+    padding: 2rem 0;
 }
 
 .md-intro {
@@ -33,11 +52,11 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Grid Layout for Modules */
+/* ===== Module Grid ===== */
 
 .module-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
     gap: 1.5rem;
 }
 
@@ -70,7 +89,7 @@ body {
     flex-wrap: wrap;
 }
 
-/* Buttons */
+/* ===== Buttons ===== */
 
 .md-button {
     display: inline-block;
@@ -79,16 +98,16 @@ body {
     border-radius: 4px;
     text-decoration: none;
     font-weight: 500;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.2s ease;
 }
 
 .md-button--primary {
-    background-color: #1e5fae;
+    background-color: #2094f3;
     color: #ffffff;
 }
 
 .md-button--primary:hover {
-    background-color: #174c8c;
+    background-color: #1976d2;
 }
 
 .md-button--secondary {
@@ -98,4 +117,16 @@ body {
 
 .md-button--secondary:hover {
     background-color: #c9ced6;
+}
+
+/* ===== Footer (Sticky) ===== */
+
+.md-footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 1rem 0;
+}
+
+.md-footer .container {
+    font-size: 0.85rem;
 }
