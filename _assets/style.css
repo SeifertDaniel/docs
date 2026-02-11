@@ -191,6 +191,73 @@ body {
     background-color: #c9ced6;
 }
 
+/* ===== Summary Block ===== */
+
+.module-summary {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.module-summary__meta {
+    font-size: 0.65rem;
+    color: #5f6368;
+}
+
+.module-summary__meta div {
+    margin-bottom: 0.3rem;
+}
+
+.module-summary__actions {
+    display: flex;
+}
+
+/* ===== Version List ===== */
+
+.version-list h2 {
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.version-list__items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid #e0e3e7;
+}
+
+.version-list__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #e0e3e7;
+    font-size: 0.65rem;
+}
+
+.version-list__number {
+    font-weight: 500;
+}
+
+.version-list__link {
+    text-decoration: none;
+    color: #2094f3;
+    font-weight: 500;
+}
+
+.version-list__link:hover {
+    text-decoration: underline;
+}
+
 /* ===== Footer (Sticky) ===== */
 
 .md-footer {

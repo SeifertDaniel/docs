@@ -2,37 +2,72 @@
 <html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>{{ plugin.name }} - Versionen</title>
+    <title>Modul-Dokumentationen - {{ plugin.name }} - Versionen</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="../_assets/favicon.png">
     <link rel="stylesheet" href="../_assets/style.css">
 </head>
 <body>
 
-<h1>{{ plugin.name }}</h1>
-<div class="meta">
-    Aktuellste Version: {{ plugin.latest }} - Aktualisiert: {{ plugin.updatedAt|date('Y-m-d') }}
-</div>
+<header class="md-header md-header--shadow md-header--lifted">
+    <nav class="md-header__inner md-grid">
+        <a href="https://docs.oxidmodule.com/" class="md-header__button md-logo" data-md-component="logo">
+            <img src="../_assets/logo.svg" alt="logo">
+        </a>
+        <div class="md-header__title">
+            Modul-Dokumentationen - {{ plugin.name }}
+        </div>
+    </nav>
+</header>
 
-<div class="card latest">
-    <strong>Aktuellste</strong><br>
-    <a href="../{{ plugin.slug }}/latest/">
-        {{ plugin.latest }}
-    </a>
-</div>
+<main class="md-main">
+    <div class="container">
 
-<h2>Alle Versionen</h2>
-<ul>
-    {% for version in plugin.versions %}
-        <li>
-            <a href="../{{ plugin.slug }}/{{ version }}/">
-                {{ version }}
-            </a>
-        </li>
-    {% endfor %}
-</ul>
+        <h1>{{ plugin.name }}</h1>
+        
+        <section class="module-summary">
+            <div class="module-summary__meta">
+                <div><strong>neueste Version:</strong> {{ plugin.latest }}</div>
+                <div><strong>Aktualisiert am:</strong> {{ plugin.updatedAt|date('Y-m-d') }}</div>
+            </div>
 
-<p><a href="../">Zur &Uuml;bersicht</a></p>
+            <div class="module-summary__actions">
+                <a class="md-button md-button--primary"
+                    href="../{{ plugin.slug }}/latest/">
+                    Aktuelle Version
+                </a>
+
+                <a class="md-button md-button--secondary"
+                    href="../">
+                    Zur &Uuml;bersicht
+                </a>
+            </div>
+        </section>
+        
+        <!-- Versionsliste -->
+        <section class="version-list">
+            <h2>Alle Versionen</h2>
+
+            <ul class="version-list__items">
+                {% for version in plugin.versions %}
+                    <li class="version-list__item">
+                        <a class="version-list__link"
+                           href="../{{ plugin.slug }}/{{ version }}/">
+                            {{ version }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+    </div>
+</main>
+
+<footer class="md-footer">
+    <div class="container">
+        Copyright &copy; {{ generatedAt|date('Y') }} D3 Data Development - Inh. Thomas Dartsch &bull; Stand: {{ generatedAt|date('Y-m-d H:i:s') }} &bull; <a href="https://www.d3data.de/Impressum-Datenschutz/">Impressum</a>
+    </div>
+</footer>
 
 </body>
 </html>
