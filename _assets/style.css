@@ -301,10 +301,8 @@ body {
     padding: 1rem 0;
 }
 
-.md-footer .container {
+.md-footer .container,
+.md-footer .container a {
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.6rem;
-}
-
-.md-footer a {
-    color: #ffffff;
 }
