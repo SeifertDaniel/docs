@@ -43,6 +43,11 @@ body {
     width: 100%;
 }
 
+.md-header--shadow {
+    box-shadow: 0 0 .2rem #0000001a,0 .2rem .4rem #0003;
+    transition: transform .25s cubic-bezier(.1,.7,.1,1),box-shadow .25s;
+}
+
 .md-header__inner {
     align-items: center;
     display: flex;
