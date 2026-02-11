@@ -1,3 +1,13 @@
-body {
+body[@data-md-color-scheme='default']
+ {
     background-color: #f5f7fa;
+}
+
+body[@data-md-color-scheme='default'] code {
+    border: 1px solid silver;
+}
+
+body[@data-md-color-scheme='default'] #__nav_3_label {
+    background-color: #f5f7fa;
+    box-shadow: #f5f7fa 0px 0px 8.8px 8.8px;
 }
