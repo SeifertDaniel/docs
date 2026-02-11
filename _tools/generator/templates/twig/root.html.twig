@@ -24,7 +24,7 @@
 
         <h1>Verfügbare Module</h1>
         <p class="md-intro">
-            Übersicht aller Module mit aktueller Version und weiterführenden Links.
+            Übersicht aller Moduldokumentationen. Die Module können Sie in unserem <a href="https://www.oxidmodule.com/">Shop</a> erwerben.
         </p>
 
         <div class="module-grid">
@@ -33,15 +33,15 @@
                 <h2 class="module-title">{{ plugin.name }}</h2>
 
                 <div class="module-meta">
-                    <div><strong>Latest:</strong> {{ plugin.latest }}</div>
-                    <div><strong>Aktualisiert:</strong> {{ plugin.updatedAt|date('d.m.Y') }}</div>
+                    <div><strong>neueste Version:</strong> {{ plugin.latest }}</div>
+                    <div><strong>Aktualisiert am:</strong> {{ plugin.updatedAt|date('d.m.Y') }}</div>
                 </div>
 
                 <div class="module-actions">
                     <a class="md-button md-button--primary"
                        href="./{{ plugin.slug }}/latest/"
                        title="Weiterleitung zur aktuellsten Version">
-                        Aktuellste Version
+                        Aktuelle Version
                     </a>
 
                     <a class="md-button md-button--secondary"
@@ -58,7 +58,7 @@
 
 <footer class="md-footer">
     <div class="container">
-        Generiert am {{ generatedAt|date('Y-m-d H:i:s') }}
+        Generiert am {{ generatedAt|date('Y-m-d H:i:s') }} - <a href="https://www.d3data.de/Impressum-Datenschutz/">Impressum</a>
     </div>
 </footer>
 

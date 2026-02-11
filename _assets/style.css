@@ -103,7 +103,7 @@ body {
 
 .md-intro {
     color: #5f6368;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 /* ===== Module Grid ===== */
@@ -117,7 +117,7 @@ body {
 .module-card {
     background: #ffffff;
     border-radius: 6px;
-    padding: 1.5rem;
+    padding: 1.0rem 1.5rem;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     display: flex;
     flex-direction: column;
@@ -126,15 +126,19 @@ body {
 
 .module-title {
     margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
     font-weight: 600;
 }
 
 .module-meta {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     color: #5f6368;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.6rem;
+}
+
+.module-meta div {
+    margin-bottom: 0.3rem;
 }
 
 .module-actions {
@@ -142,6 +146,7 @@ body {
     flex-direction: row;
     gap: 0.5rem;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* ===== Buttons ===== */
@@ -189,4 +194,8 @@ body {
 
 .md-footer .container {
     font-size: 0.6rem;
+}
+
+.md-footer a {
+    color: #ffffff;
 }
