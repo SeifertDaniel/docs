@@ -9,18 +9,7 @@ on:
   push:
     branches:
       - main
-    paths:
-      - '**/*'
-      - '!*_*/**'
-      - '!_*/**'
-      - '!.github/**'
-
   workflow_dispatch:
-    inputs:
-      download_docs:
-        description: "Download documentation instead of deploying"
-        required: false
-        default: "false"
 
 jobs:
   generate:
