@@ -92,6 +92,8 @@ body {
 .md-header__title {
     font-size: 1.1rem;
     font-weight: 700;
+    margin-left: 1rem;
+    margin-right: .4rem;
 }
 
 /* ===== Main Content ===== */
