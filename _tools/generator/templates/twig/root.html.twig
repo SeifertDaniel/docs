@@ -15,7 +15,7 @@
             <img src="./_assets/logo.svg" alt="logo">
         </a>
         <div class="md-header__title">
-            Modul-Dokumentation
+            Modul-Dokumentationen
         </div>
     </nav>
 </header>
@@ -35,7 +35,7 @@
 
                 <div class="module-meta">
                     <div><strong>neueste Version:</strong> {{ plugin.latest }}</div>
-                    <div><strong>Aktualisiert am:</strong> {{ plugin.updatedAt|date('d.m.Y') }}</div>
+                    <div><strong>Aktualisiert am:</strong> {{ plugin.updatedAt|date('Y-m-d') }}</div>
                 </div>
 
                 <div class="module-actions">
@@ -47,7 +47,7 @@
 
                     <a class="md-button md-button--secondary"
                        href="./{{ plugin.slug }}/">
-                        Versionsübersicht
+                        &Uuml;bersicht
                     </a>
                 </div>
             </div>
@@ -59,7 +59,7 @@
 
 <footer class="md-footer">
     <div class="container">
-        Generiert am {{ generatedAt|date('Y-m-d H:i:s') }} - <a href="https://www.d3data.de/Impressum-Datenschutz/">Impressum</a>
+        Copyright &copy; {{ generatedAt|date('Y') }} D3 Data Development - Inh. Thomas Dartsch &bull; Stand: {{ generatedAt|date('Y-m-d H:i:s') }} &bull; <a href="https://www.d3data.de/Impressum-Datenschutz/">Impressum</a>
     </div>
 </footer>
 
