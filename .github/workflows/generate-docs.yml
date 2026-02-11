@@ -33,6 +33,13 @@ jobs:
         working-directory: _tools/generator
         run: php generate.php
 
+      - name: Remove internal tools before deploy
+        run: |
+          rm -rf _tools
+          rm -rf .git
+          rm -rf .github
+          rm README.md
+
       - name: Upload documentation artifact
         uses: actions/upload-pages-artifact@v3
         with:
