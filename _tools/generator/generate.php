@@ -23,7 +23,7 @@ $twig = new Environment($loader, [
 
 $html = $twig->render('root.html.twig', [
     'plugins' => $plugins,
-    'generatedAt' => new \DateTimeImmutable(),
+    'generatedAt' => new \DateTimeImmutable('now', new \DateTimeZone('Europe/Berlin')),
 ]);
 file_put_contents($root . '/index.html', $html);
 
@@ -50,7 +50,7 @@ foreach ($plugins as $plugin) {
 
 $sitemap = $twig->render('sitemap.xml.twig', [
     'plugins' => $plugins,
-    'generatedAt' => new \DateTimeImmutable(),
+    'generatedAt' => new \DateTimeImmutable('now', new \DateTimeZone('Europe/Berlin')),
     'baseUrl' => 'https://docs.oxidmodule.com',
 ]);
 file_put_contents($root . '/sitemap.xml', $sitemap);
