@@ -39,7 +39,7 @@
 
                 <a class="md-button md-button--secondary"
                     href="../">
-                    Zur &Uuml;bersicht
+                    Modul&uuml;bersicht
                 </a>
             </div>
         </section>
@@ -50,8 +50,8 @@
 
             <ul class="version-list__items">
                 {% for version in plugin.versions %}
-                    <li class="version-list__item">
-                        <a class="version-list__link"
+                    <li>
+                        <a class="version-pill"
                            href="../{{ plugin.slug }}/{{ version }}/">
                             {{ version }}
                         </a>
@@ -65,7 +65,7 @@
 
 <footer class="md-footer">
     <div class="container">
-        Copyright &copy; {{ generatedAt|date('Y') }} D3 Data Development - Inh. Thomas Dartsch &bull; Stand: {{ generatedAt|date('Y-m-d H:i:s') }} &bull; <a href="https://www.d3data.de/Impressum-Datenschutz/">Impressum</a>
+        Copyright &copy; {{ generatedAt|date('Y') }} D3 Data Development - Inh. Thomas Dartsch &bull; Stand: {{ generatedAt|date('Y-m-d') }} &bull; <a href="https://www.d3data.de/Impressum-Datenschutz/">Impressum</a>
     </div>
 </footer>
 

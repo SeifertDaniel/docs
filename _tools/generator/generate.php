@@ -19,6 +19,7 @@ $plugins = $repo->getAll();
 $loader = new FilesystemLoader(__DIR__ . '/templates/twig');
 $twig = new Environment($loader, [
     'cache' => false,
+    'timezone' => 'Europe/Berlin',
 ]);
 
 $html = $twig->render('root.html.twig', [
