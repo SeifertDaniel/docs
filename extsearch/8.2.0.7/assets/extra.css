@@ -11,3 +11,7 @@ body[data-md-color-scheme="default"] li.md-nav__item--section > label {
     background-color: #f5f7fa;
     box-shadow: #f5f7fa 0px 0px 8.8px 8.8px;
 }
+
+.md-header__title {
+    font-size: 1.1rem;
+}
