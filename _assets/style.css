@@ -1,50 +1,101 @@
+/* Base Material-like Layout */
+
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    margin: 3rem;
-    background: #fafafa;
-    color: #222;
+    margin: 0;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #2e3033;
 }
 
-h1, h2 {
-    margin-top: 0;
+.md-header {
+    background-color: #1e5fae; /* Mittelblau */
+    color: #ffffff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.plugins {
+.md-header__title {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.md-main {
+    padding: 2rem;
+}
+
+.md-main__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.md-intro {
+    color: #5f6368;
+    margin-bottom: 2rem;
+}
+
+/* Grid Layout for Modules */
+
+.module-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 1.5rem;
 }
 
-.card, .plugin {
-    background: #fff;
-    padding: 1.25rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,.05);
+.module-card {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.meta {
-    font-size: .85rem;
-    color: #666;
-    margin-bottom: .75rem;
+.module-title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
-.actions a,
-a.button {
+.module-meta {
+    font-size: 0.875rem;
+    color: #5f6368;
+    margin-bottom: 1.25rem;
+}
+
+.module-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Buttons */
+
+.md-button {
     display: inline-block;
-    margin-right: .5rem;
-    padding: .4rem .7rem;
-    font-size: .85rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.8rem;
     border-radius: 4px;
     text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.primary {
-    background: #005fcc;
-    color: white;
+.md-button--primary {
+    background-color: #1e5fae;
+    color: #ffffff;
 }
 
-.secondary {
-    background: #e0e0e0;
-    color: #222;
+.md-button--primary:hover {
+    background-color: #174c8c;
+}
+
+.md-button--secondary {
+    background-color: #e0e3e7;
+    color: #2e3033;
+}
+
+.md-button--secondary:hover {
+    background-color: #c9ced6;
 }
