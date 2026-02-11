@@ -43,8 +43,16 @@ body {
     width: 100%;
 }
 
-.md-header .container {
-    padding: 1rem 1.25rem;
+.md-header__inner {
+    align-items: center;
+    display: flex;
+    padding: 0 .2rem;
+}
+
+.md-grid {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 61rem;
 }
 
 .md-header__button {
@@ -73,9 +81,17 @@ body {
     padding: .4rem;
 }
 
+.md-header__button.md-logo img, 
+.md-header__button.md-logo svg {
+    fill: currentcolor;
+    display: block;
+    height: 1.2rem;
+    width: auto;
+}
+
 .md-header__title {
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 /* ===== Main Content ===== */
