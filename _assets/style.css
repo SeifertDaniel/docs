@@ -35,6 +35,32 @@ body {
     padding: 1rem 1.25rem;
 }
 
+.md-header__button {
+    color: currentcolor;
+    cursor: pointer;
+    margin: .2rem;
+    outline-color: var(--md-accent-fg-color);
+    padding: .4rem;
+    position: relative;
+    transition: opacity .25s;
+    vertical-align: middle;
+    z-index: 1;
+}
+
+.md-header__button:not(.focus-visible) {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+.md-header__button:not([hidden]) {
+    display: inline-block;
+}
+
+.md-header__button.md-logo {
+    margin: .2rem;
+    padding: .4rem;
+}
+
 .md-header__title {
     font-size: 1.25rem;
     font-weight: 500;
@@ -85,15 +111,21 @@ body {
 
 .module-actions {
     display: flex;
+    flex-direction: row;
     gap: 0.5rem;
     flex-wrap: wrap;
 }
 
 /* ===== Buttons ===== */
 
+.module-actions .md-button {
+    display: inline-flex;
+    white-space: nowrap;
+}
+
 .md-button {
     display: inline-block;
-    padding: 0.45rem 0.9rem;
+    padding: 0.45rem 0.7rem;
     font-size: 0.8rem;
     border-radius: 4px;
     text-decoration: none;
