@@ -112,6 +112,7 @@ body {
     font-family: "Roboto", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
     font-weight: 200;
     font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .md-intro {
