@@ -1,0 +1,17 @@
+body[data-md-color-scheme="default"]
+ {
+    background-color: #f5f7fa;
+}
+
+body[data-md-color-scheme="default"] code {
+    border: 1px solid silver;
+}
+
+body[data-md-color-scheme="default"] .md-nav__list > .md-nav__item--active > label.md-nav__link {
+    background-color: #f5f7fa;
+    box-shadow: #f5f7fa 0px 0px 8.8px 8.8px;
+}
+
+.md-header__title {
+    font-size: 1.1rem;
+}
