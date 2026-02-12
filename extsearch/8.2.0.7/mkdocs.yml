@@ -97,11 +97,11 @@ extra:
   homepage: https://docs.oxidmodule.com/
   generator: false
   doc_version: "8.2.0.7"
-  last_updated: "11.02.2026"
+  last_updated: "12.02.2026"
 
 copyright: >
   <a href="https://www.d3data.de/">Copyright &copy; 2026 D3 Data Development · Inh. Thomas Dartsch</a> ·
-  Dokumentation Stand: 11.02.2026
+  Dokumentation Stand: 12.02.2026
 
 markdown_extensions:
   - tables
