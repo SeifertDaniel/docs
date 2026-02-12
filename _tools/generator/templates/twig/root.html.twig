@@ -37,7 +37,9 @@
 
                 <div class="module-meta">
                     <div><strong>neueste Version:</strong> {{ plugin.latest }}</div>
-                    <div><strong>Aktualisiert am:</strong> {{ plugin.updatedAt|date('Y-m-d') }}</div>
+                    {% if plugin.updatedAt is not null %}
+                        <div><strong>Aktualisiert am:</strong> {{ plugin.updatedAt|date('Y-m-d') }}</div>
+                    {% endif %}
                 </div>
 
                 <div class="module-actions">

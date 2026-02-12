@@ -28,8 +28,7 @@ final class PluginRepository
             $latest = $versions[0];
 
             $name = PluginMetadata::readSiteName($pluginPath, $latest);
-
-            $updatedAt = $this->resolveUpdatedAt($pluginPath, $latest);
+            $updatedAt = PluginMetadata::readUpdateDate($pluginPath, $latest);
 
             $result[] = new Plugin(
                 slug: $slug,
@@ -45,20 +44,5 @@ final class PluginRepository
         );
 
         return $result;
-    }
-
-    private function resolveUpdatedAt(string $pluginPath, SemVersion $latest): \DateTimeImmutable
-    {
-        $mkdocs = $pluginPath
-                  . DIRECTORY_SEPARATOR
-                  . (string) $latest
-                  . DIRECTORY_SEPARATOR
-                  . 'mkdocs.yml';
-
-        if (is_file($mkdocs)) {
-            return new \DateTimeImmutable('@' . filemtime($mkdocs));
-        }
-
-        return new \DateTimeImmutable('@' . filemtime($pluginPath));
     }
 }

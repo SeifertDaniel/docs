@@ -93,6 +93,7 @@ extra:
   modcfgident:   "d3_extsearch"
   composerident: "d3/extsearch"
   homepage: https://www.d3data.de/
+  last_updated: "2026-02-01"
 
 copyright: >
   Copyright &copy; 2026 D3 Data Development - Inh. Thomas Dartsch

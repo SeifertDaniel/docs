@@ -37,4 +37,41 @@ final class PluginMetadata
 
         return $name;
     }
+
+    public static function readUpdateDate(string $pluginPath, SemVersion $latest): ?\DateTimeImmutable
+    {
+        $mkdocsPath = $pluginPath
+                      . DIRECTORY_SEPARATOR
+                      . (string) $latest
+                      . DIRECTORY_SEPARATOR
+                      . 'mkdocs.yml';
+
+        if (!is_file($mkdocsPath)) {
+            return null;
+        }
+
+        try {
+            $data = Yaml::parseFile($mkdocsPath);
+        } catch (\Throwable) {
+            return null;
+        }
+
+        if (
+            !isset($data['extra']['last_updated']) ||
+            !is_string($data['extra']['last_updated'])
+        ) {
+            return null;
+        }
+
+        $dateString = trim($data['extra']['last_updated']);
+
+        try {
+            return new \DateTimeImmutable(
+                $dateString,
+                new \DateTimeZone('Europe/Berlin')
+            );
+        } catch (\Throwable) {
+            return null;
+        }
+    }
 }
