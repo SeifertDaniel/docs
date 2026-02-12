@@ -136,7 +136,7 @@ body {
 .module-card {
     background: #ffffff;
     border-radius: 6px;
-    padding: 1.0rem 1.5rem;
+    padding: 1.0rem;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     display: flex;
     flex-direction: column;
