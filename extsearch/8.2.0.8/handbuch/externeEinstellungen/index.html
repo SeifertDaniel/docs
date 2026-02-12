@@ -2060,8 +2060,24 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einstellungen außerhalb des Adminbereichs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2079,6 +2095,45 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#utf8-decoding-erzwingen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UTF8-Decoding erzwingen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#urls-in-artikellisten-nicht-um-suchparameter-erganzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        URLs in Artikellisten nicht um Suchparameter ergänzen
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2579,12 +2634,14 @@
 
 
 
+  <h1>Einstellungen außerhalb des Adminbereichs</h1>
+
 <p>Für wenige Installation sind bestimmte Einstellungen notwendig, um das Modul z.B. an bestimmte Servereinstellungen anzupassen. Diese Optionen werden der Übersichtlichkeit wegen nicht direkt im Adminbereich definiert. Tragen Sie die Einstellungen bei Bedarf bitte direkt in die Datei <code>config.inc.php</code> ein.</p>
-<h1 id="utf8-decoding-erzwingen">UTF8-Decoding erzwingen</h1>
+<h2 id="utf8-decoding-erzwingen">UTF8-Decoding erzwingen</h2>
 <p>Werden Suchbegriffe mit Sonderzeichen fehlerhaft dargestellt, kann es nötig sein, dass diese unbedingt decodiert werden müssen. Hierfür ist folgende Einstellung zu verwenden:</p>
 <pre><code>$this-&gt;d3extsearch_forceUtf8decode = true;
 </code></pre>
-<h1 id="urls-in-artikellisten-nicht-um-suchparameter-erganzen">URLs in Artikellisten nicht um Suchparameter ergänzen</h1>
+<h2 id="urls-in-artikellisten-nicht-um-suchparameter-erganzen">URLs in Artikellisten nicht um Suchparameter ergänzen</h2>
 <p>Die folgende Option verhindert, dass Artikeladressen innerhalb der Schnellsuche um Suchparameter ergänzt werden:</p>
 <pre><code>$this-&gt;bld3ExtSearchSuggestForceHideUrlParams = true;
 </code></pre>

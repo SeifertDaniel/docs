@@ -2144,8 +2144,24 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Erweiterungsmöglichkeiten
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2163,6 +2179,78 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#allgemein" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Allgemein
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schnellsuche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schnellsuche
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter-auswahl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filter-Auswahl
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trefferhervorhebungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trefferhervorhebungen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zusatzliche-formularfelder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zusätzliche Formularfelder
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2579,15 +2667,17 @@
 
 
 
-<h1 id="allgemein">Allgemein</h1>
+  <h1>Erweiterungsmöglichkeiten</h1>
+
+<h2 id="allgemein">Allgemein</h2>
 <p>Viele Stellen des Frontends lassen sich unkompliziert anpassen. Dies gilt für das Design der angezeigten Fenster und Rahmen, sowie auch bestimmte Funktionalitäten.</p>
-<h1 id="schnellsuche">Schnellsuche</h1>
+<h2 id="schnellsuche">Schnellsuche</h2>
 <p>Die Schnellsuche stellt ein per Ajax-Technologie erstelltes Trefferfenster zur Verfügung. Dieses wird, wie alle anderen Shopseiten auch, aus einem Template erstellt. Möchten Sie dieses Fenster anpassen, verwenden Sie bitte die <code>modules/d3/extsearch/Application/views/tpl/d3_ext_search_quicksearch.tpl</code> für inhaltliche Änderungen. Grafische Einstellungen sind in der moduleigenen CSS-Datei <code>d3_ext_search.css</code> notiert.</p>
-<h1 id="filter-auswahl">Filter-Auswahl</h1>
+<h2 id="filter-auswahl">Filter-Auswahl</h2>
 <p>Die Filter-Auswahl wird oberhalb oder neben der Trefferliste angezeigt. Je nach Einstellung werden Ihnen hier Kategorien, Hersteller oder auch die Indexleiste gezeigt. Diese Elemente sind im Template <code>modules/d3/extsearch/Application/views/tpl/[theme]/d3_inc_extsearch.tpl</code> definiert. Um die Auswahlfelder der Indexleiste anzupassen, verwenden Sie die include- Aufrufe, die Sie beispielhaft im Template finden. Um die Logik müssen Sie sich hierbei nicht kümmern. Weitere Details zu den Feldern der Indexleiste finden Sie in den <a href="100_technische_Erlaeuterungen/030_Indexleiste.md">Technischen Erläuterungen</a> dieses Handbuchs.</p>
-<h1 id="trefferhervorhebungen">Trefferhervorhebungen</h1>
+<h2 id="trefferhervorhebungen">Trefferhervorhebungen</h2>
 <p>Welches Format die Hervorhebung der gesuchten Begriffe hat, legen Sie im Template <code>modules/d3/extsearch/Application/views/tpl/d3_ext_search_highlight.tpl</code> fest. Hierbei sind alle HTML-Tags erlaubt, die im selben Template auch wieder abgeschlossen werden können.</p>
-<h1 id="zusatzliche-formularfelder">Zusätzliche Formularfelder</h1>
+<h2 id="zusatzliche-formularfelder">Zusätzliche Formularfelder</h2>
 <p>Diese Funktion ist ausführlich in den <a href="100_technische_Erlaeuterungen/010_zusaetzliche_Formularfelder.md">Technischen Erläuterungen</a> beschrieben.</p>
 
 
