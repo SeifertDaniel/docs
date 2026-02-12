@@ -15,3 +15,7 @@ body[data-md-color-scheme="default"] .md-nav__list > .md-nav__item--active > lab
 .md-header__title {
     font-size: 1.1rem;
 }
+
+.md-typeset {
+    font-size: 0.7rem;
+}
