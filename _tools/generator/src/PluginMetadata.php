@@ -3,7 +3,10 @@ declare(strict_types=1);
 
 namespace Docs\Generator;
 
+use DateTimeImmutable;
+use DateTimeZone;
 use Symfony\Component\Yaml\Yaml;
+use Throwable;
 
 final class PluginMetadata
 {
@@ -21,7 +24,7 @@ final class PluginMetadata
 
         try {
             $data = Yaml::parseFile($mkdocsPath);
-        } catch (\Throwable) {
+        } catch ( Throwable) {
             return basename($pluginPath);
         }
 
@@ -38,7 +41,7 @@ final class PluginMetadata
         return $name;
     }
 
-    public static function readUpdateDate(string $pluginPath, SemVersion $latest): ?\DateTimeImmutable
+    public static function readUpdateDate(string $pluginPath, SemVersion $latest): ?DateTimeImmutable
     {
         $mkdocsPath = $pluginPath
                       . DIRECTORY_SEPARATOR
@@ -52,7 +55,7 @@ final class PluginMetadata
 
         try {
             $data = Yaml::parseFile($mkdocsPath);
-        } catch (\Throwable) {
+        } catch ( Throwable) {
             return null;
         }
 
@@ -66,11 +69,12 @@ final class PluginMetadata
         $dateString = trim($data['extra']['last_updated']);
 
         try {
-            return new \DateTimeImmutable(
-                $dateString,
-                new \DateTimeZone('Europe/Berlin')
+            return DateTimeImmutable::createFromFormat(
+                'Y-m-d H:i',
+                $dateString . ' 12:00',
+                new DateTimeZone('Europe/Berlin')
             );
-        } catch (\Throwable) {
+        } catch ( Throwable) {
             return null;
         }
     }
