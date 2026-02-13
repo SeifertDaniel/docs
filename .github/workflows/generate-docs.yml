@@ -76,3 +76,23 @@ jobs:
             echo "Directory listing:"
             ls -la
           EOF
+
+      - name: Deploy via rsync
+        run: |
+          TARGET="${{ vars.DEPLOY_TARGET_PATH }}"
+
+          echo "Deploy target: '$TARGET'"
+
+          if [[ -z "$TARGET" || "$TARGET" == "/" ]]; then
+            echo "ERROR: Invalid DEPLOY_TARGET_PATH"
+            exit 1
+          fi
+
+          rsync -az \
+            --omit-dir-times \
+            --no-perms \
+            --no-owner \
+            --no-group \
+            -e "ssh -p ${{ vars.DEPLOY_SSH_PORT }}" \
+            ./deploy/ \
+            ${{ vars.DEPLOY_SSH_USER }}@${{ vars.DEPLOY_SSH_HOST }}:${{ vars.DEPLOY_TARGET_PATH }}/
