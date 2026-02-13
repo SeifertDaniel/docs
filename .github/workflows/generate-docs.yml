@@ -1,9 +1,4 @@
-name: Generate Documentation Index
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+name: Generate and deploy Documentation Index
 
 on:
   push:
@@ -41,13 +36,43 @@ jobs:
           rm README.md
 
       - name: Upload documentation artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
+          name: documentation
           path: .
 
   deploy:
     needs: generate
     runs-on: ubuntu-latest
+
     steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      - name: Download documentation artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: documentation
+          path: ./deploy
+
+      - name: Show local artifact content
+        run: |
+          echo "Local artifact directory:"
+          ls -la ./deploy
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          ssh-keyscan -p ${{ vars.DEPLOY_SSH_PORT || 22 }} ${{ vars.DEPLOY_SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Test SSH connection and show remote directory
+        run: |
+          ssh -p ${{ vars.DEPLOY_SSH_PORT || 22 }} \
+            ${{ vars.DEPLOY_SSH_USER }}@${{ vars.DEPLOY_SSH_HOST }} << 'EOF'
+            cd ${{ vars.DEPLOY_TARGET_PATH }}
+            echo "Connected to:"
+            pwd
+            echo ""
+            echo "Directory listing:"
+            ls -la
+          EOF
