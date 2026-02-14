@@ -26,6 +26,11 @@ jobs:
         if: github.event_name == 'repository_dispatch'
         id: validate
         run: |
+          if [ "${{ github.event_name }}" != "repository_dispatch" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
           if [ -z "${{ github.event.client_payload.plugin_id }}" ] || \
              [ -z "${{ github.event.client_payload.module_version }}" ] || \
              [ -z "${{ github.event.client_payload.artifact_name }}" ] || \
@@ -42,7 +47,7 @@ jobs:
         run: echo "No valid dispatch payload. Nothing to upload."
 
       - name: Download artifact from source repo
-        if: github.event_name == 'repository_dispatch' && steps.validate.outputs.skip == 'false'
+        if: steps.validate.outputs.skip == 'false'
         uses: dawidd6/action-download-artifact@v3
         with:
           repo: ${{ github.event.client_payload.source_repo }}
@@ -52,7 +57,7 @@ jobs:
           github_token: ${{ secrets.DOCS_READ_TOKEN }}
 
       - name: Setup SSH
-        if: github.event_name == 'repository_dispatch' && steps.validate.outputs.skip == 'false'
+        if: steps.validate.outputs.skip == 'false'
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
@@ -61,7 +66,7 @@ jobs:
           ssh-keyscan -p ${{ vars.DEPLOY_SSH_PORT || 22 }} ${{ vars.DEPLOY_SSH_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy to remote
-        if: github.event_name == 'repository_dispatch' && steps.validate.outputs.skip == 'false'
+        if: steps.validate.outputs.skip == 'false'
         run: |
           BASE_PATH="${{ vars.DEPLOY_TARGET_PATH }}"
           PLUGIN_ID="${{ github.event.client_payload.plugin_id }}"
