@@ -155,7 +155,7 @@ jobs:
             ls -la
           EOF
 
-      - name: Deploy via rsync
+      - name: Deploy overview pages to remote
         run: |
           TARGET="${{ vars.DEPLOY_TARGET_PATH }}"
 
@@ -166,11 +166,17 @@ jobs:
             exit 1
           fi
 
+          PORT="${{ vars.DEPLOY_SSH_PORT }}"
+          if [ -z "$PORT" ]; then
+            PORT=22
+          fi
+
           rsync -az \
             --omit-dir-times \
             --no-perms \
             --no-owner \
             --no-group \
-            -e "ssh -p ${{ vars.DEPLOY_SSH_PORT }}" \
+            --chmod=F644,D755 \
+            -e "ssh -p ${PORT}" \
             ./deploy/ \
             ${{ vars.DEPLOY_SSH_USER }}@${{ vars.DEPLOY_SSH_HOST }}:${{ vars.DEPLOY_TARGET_PATH }}/
