@@ -95,6 +95,7 @@ jobs:
             ${{ vars.DEPLOY_SSH_USER }}@${{ vars.DEPLOY_SSH_HOST }}:${TARGET_PATH}/
 
   generate:
+    needs: upload-module-docs
     runs-on: ubuntu-latest
 
     steps:
