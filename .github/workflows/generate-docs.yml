@@ -9,6 +9,82 @@ on:
     types: [module-docs-update]
 
 jobs:
+  upload-module-docs:
+    name: Upload Module Documentation
+    runs-on: ubuntu-latest
+
+    if: github.event_name == 'repository_dispatch'
+
+    steps:
+      - name: Validate payload
+        id: validate
+        run: |
+          if [ -z "${{ github.event.client_payload.plugin_id }}" ] || \
+             [ -z "${{ github.event.client_payload.module_version }}" ] || \
+             [ -z "${{ github.event.client_payload.artifact_name }}" ] || \
+             [ -z "${{ github.event.client_payload.source_repo }}" ] || \
+             [ -z "${{ github.event.client_payload.source_run_id }}" ]; then
+            echo "Missing payload values. Skipping job."
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          echo "skip=false" >> $GITHUB_OUTPUT
+
+      - name: Stop if invalid
+        if: steps.validate.outputs.skip == 'true'
+        run: echo "No valid dispatch payload. Nothing to upload."
+
+      - name: Download artifact from source repo
+        if: steps.validate.outputs.skip == 'false'
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          repo: ${{ github.event.client_payload.source_repo }}
+          run_id: ${{ github.event.client_payload.source_run_id }}
+          name: ${{ github.event.client_payload.artifact_name }}
+          path: ./artifact
+
+      - name: Setup SSH
+        if: steps.validate.outputs.skip == 'false'
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          ssh-keyscan -p ${{ vars.DEPLOY_SSH_PORT || 22 }} ${{ vars.DEPLOY_SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to remote
+        if: steps.validate.outputs.skip == 'false'
+        run: |
+          BASE_PATH="${{ vars.DEPLOY_TARGET_PATH }}"
+          PLUGIN_ID="${{ github.event.client_payload.plugin_id }}"
+          VERSION="${{ github.event.client_payload.module_version }}"
+
+          if [[ -z "$BASE_PATH" || "$BASE_PATH" == "/" ]]; then
+            echo "ERROR: Invalid DEPLOY_TARGET_PATH"
+            exit 1
+          fi
+
+          PORT="${{ vars.DEPLOY_SSH_PORT }}"
+          if [ -z "$PORT" ]; then
+            PORT=22
+          fi
+
+          TARGET_PATH="${BASE_PATH}/${PLUGIN_ID}/${VERSION}"
+
+          echo "Deploying to ${TARGET_PATH}"
+
+          ssh ${{ vars.DEPLOY_SSH_USER }}@${{ vars.DEPLOY_SSH_HOST }} "mkdir -p ${TARGET_PATH}"
+
+          rsync -az --delete \
+            --omit-dir-times \
+            --no-perms \
+            --no-owner \
+            --no-group \
+            --chmod=F644,D755 \
+            -e "ssh -p ${PORT}" \
+            ./artifact/ \
+            ${{ vars.DEPLOY_SSH_USER }}@${{ vars.DEPLOY_SSH_HOST }}:${TARGET_PATH}/
+
   generate:
     runs-on: ubuntu-latest
 
