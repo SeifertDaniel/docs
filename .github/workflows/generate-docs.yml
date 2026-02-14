@@ -73,6 +73,11 @@ jobs:
             PORT=22
           fi
 
+          if [ ! -d "./artifact" ] || [ -z "$(ls -A ./artifact)" ]; then
+            echo "ERROR: Artifact directory is empty. Aborting deploy."
+            exit 1
+          fi
+
           TARGET_PATH="${BASE_PATH}/${PLUGIN_ID}/${VERSION}"
 
           echo "Deploying to ${TARGET_PATH}"
