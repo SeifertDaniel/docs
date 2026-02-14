@@ -3,34 +3,36 @@ declare(strict_types=1);
 
 namespace Docs\Generator;
 
-use Docs\Generator\StructureProvider\StructureProvider;
+use Docs\Generator\MetadataBatchProvider\MetadataProvider;
 
 final class PluginRepository
 {
-    private string $root;
     private PluginScanner $scanner;
+    private MetadataProvider $metadataProvider;
 
-    public function __construct(string $root, StructureProvider $provider)
-    {
-        $this->root = rtrim($root, DIRECTORY_SEPARATOR);
-        $this->scanner = new PluginScanner($provider);
+    public function __construct(
+        PluginScanner $scanner,
+        MetadataProvider $metadataProvider
+    ) {
+        $this->scanner = $scanner;
+        $this->metadataProvider = $metadataProvider;
     }
 
-    /**
-     * @return list<Plugin>
-     */
     public function getAll(): array
     {
         $result = [];
 
         $scanned = $this->scanner->scan();
 
-        foreach ($scanned as $slug => $versions) {
-            $pluginPath = $this->root . DIRECTORY_SEPARATOR . $slug;
-            $latest = $versions[0];
+        if ($scanned === []) {
+            return [];
+        }
 
-            $name = PluginMetadata::readSiteName($pluginPath, $latest);
-            $updatedAt = PluginMetadata::readUpdateDate($pluginPath, $latest);
+        $metadataMap = $this->metadataProvider->getLatestMetadata();
+
+        foreach ($scanned as $slug => $versions) {
+            $name = $metadataMap[$slug]['name'] ?? $slug;
+            $updatedAt = $metadataMap[$slug]['updatedAt'] ?? null;
 
             $result[] = new Plugin(
                 slug: $slug,

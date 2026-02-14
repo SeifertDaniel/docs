@@ -9,11 +9,15 @@
     {% for plugin in plugins %}
         <url>
             <loc>{{ baseUrl }}/{{ plugin.slug }}/</loc>
-            <lastmod>{{ plugin.updatedAt|date('Y-m-d') }}</lastmod>
+            {% if plugin.updatedAt is not null %}
+                <lastmod>{{ plugin.updatedAt|date('Y-m-d') }}</lastmod>
+            {% endif %}
         </url>
         <url>
             <loc>{{ baseUrl }}/{{ plugin.slug }}/latest/</loc>
-            <lastmod>{{ plugin.updatedAt|date('Y-m-d') }}</lastmod>
+            {% if plugin.updatedAt is not null %}
+                <lastmod>{{ plugin.updatedAt|date('Y-m-d') }}</lastmod>
+            {% endif %}
         </url>
     {% endfor %}
 

@@ -8,8 +8,6 @@ use InvalidArgumentException;
 
 final class PluginScanner
 {
-    private string $root;
-
     public function __construct(
         private StructureProvider $provider
     ) {}
@@ -45,32 +43,5 @@ final class PluginScanner
 
 
         return $plugins;
-    }
-
-    /**
-     * @return list<SemVersion>
-     */
-    private function scanVersions(string $pluginPath): array
-    {
-        $versions = [];
-
-        foreach (scandir($pluginPath) as $dir) {
-            if ($dir === '.' || $dir === '..') {
-                continue;
-            }
-
-            $path = $pluginPath . DIRECTORY_SEPARATOR . $dir;
-            if (!is_dir($path)) {
-                continue;
-            }
-
-            try {
-                $versions[] = SemVersion::fromString($dir);
-            } catch (InvalidArgumentException) {
-                continue;
-            }
-        }
-
-        return $versions;
     }
 }

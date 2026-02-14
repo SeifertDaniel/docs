@@ -7,23 +7,32 @@ use RuntimeException;
 
 final class RemoteSshProvider implements StructureProvider
 {
-    public function __construct(private string $sshCommand) {}
+    public function __construct(
+        private string $sshBaseCommand,
+        private string $remoteRoot
+    ) {}
 
     public function getStructure(): array
     {
-        exec($this->sshCommand, $output, $exit);
+        $command = sprintf(
+            "find %s -mindepth 2 -maxdepth 2 -type d -printf '%%P\n'",
+            escapeshellarg($this->remoteRoot)
+        );
+
+        exec(
+            $this->sshBaseCommand . ' ' . escapeshellarg($command),
+            $output,
+            $exit
+        );
 
         if ($exit !== 0) {
-            throw new RuntimeException("SSH failed");
+            throw new RuntimeException('Remote structure scan failed');
         }
 
         $result = [];
 
         foreach ($output as $line) {
-            $parts = explode('/', trim($line));
-            $slug = $parts[count($parts)-2];
-            $version = $parts[count($parts)-1];
-
+            [$slug, $version] = explode('/', trim($line), 2);
             $result[$slug][] = $version;
         }
 
