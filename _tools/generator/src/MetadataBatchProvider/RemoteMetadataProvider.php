@@ -43,7 +43,7 @@ final class RemoteMetadataProvider implements MetadataProvider
 
         return <<<BASH
 find $root -mindepth 2 -maxdepth 2 -type d -printf '%P\n' \
-| awk -F/ '{print \$1 " " \$2}' \
+| awk -F/ '$2 ~ /^[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?$/ {print \$1 " " \$2}' \
 | sort -k1,1 -k2,2V \
 | awk '
 {
