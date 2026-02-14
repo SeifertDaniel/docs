@@ -46,6 +46,7 @@ jobs:
           run_id: ${{ github.event.client_payload.source_run_id }}
           name: ${{ github.event.client_payload.artifact_name }}
           path: ./artifact
+          github_token: ${{ secrets.DOCS_READ_TOKEN }}
 
       - name: Setup SSH
         if: steps.validate.outputs.skip == 'false'
