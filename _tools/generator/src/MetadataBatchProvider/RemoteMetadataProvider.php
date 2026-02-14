@@ -21,8 +21,8 @@ final readonly class RemoteMetadataProvider implements MetadataProvider
         $command = $this->buildCommand();
 
         // debug
-        fwrite(STDOUT, "---- Command ----\n");
-        fwrite(STDOUT, $this->sshBaseCommand . ' ' . escapeshellarg($command)."\n");
+//        fwrite(STDOUT, "---- Command ----\n");
+//        fwrite(STDOUT, $this->sshBaseCommand . ' ' . escapeshellarg($command)."\n");
 
         exec($this->sshBaseCommand . ' ' . escapeshellarg($command), $output, $exit);
 
@@ -31,8 +31,8 @@ final readonly class RemoteMetadataProvider implements MetadataProvider
         }
 
         // debug
-        fwrite(STDOUT, "---- RAW METADATA OUTPUT ----\n");
-        fwrite(STDOUT, implode("\n", $output) . "\n");
+//        fwrite(STDOUT, "---- RAW METADATA OUTPUT ----\n");
+//        fwrite(STDOUT, implode("\n", $output) . "\n");
 
         return $this->parseStream(implode("\n", $output));
     }
