@@ -14,7 +14,7 @@ final class PluginMetadata
     {
         $mkdocsPath = $pluginPath
                       . DIRECTORY_SEPARATOR
-                      . (string) $latest
+                      . $latest
                       . DIRECTORY_SEPARATOR
                       . 'mkdocs.yml';
 
@@ -45,7 +45,7 @@ final class PluginMetadata
     {
         $mkdocsPath = $pluginPath
                       . DIRECTORY_SEPARATOR
-                      . (string) $latest
+                      . $latest
                       . DIRECTORY_SEPARATOR
                       . 'mkdocs.yml';
 

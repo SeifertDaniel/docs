@@ -3,15 +3,17 @@ declare(strict_types=1);
 
 namespace Docs\Generator;
 
+use Docs\Generator\StructureProvider\StructureProvider;
+
 final class PluginRepository
 {
     private string $root;
     private PluginScanner $scanner;
 
-    public function __construct(string $root)
+    public function __construct(string $root, StructureProvider $provider)
     {
         $this->root = rtrim($root, DIRECTORY_SEPARATOR);
-        $this->scanner = new PluginScanner($this->root);
+        $this->scanner = new PluginScanner($provider);
     }
 
     /**

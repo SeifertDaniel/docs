@@ -121,8 +121,22 @@ jobs:
         working-directory: _tools/generator
         run: composer install --no-dev --prefer-dist --no-interaction
 
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          ssh-keyscan -p ${{ vars.DEPLOY_SSH_PORT || 22 }} \
+            ${{ vars.DEPLOY_SSH_HOST }} >> ~/.ssh/known_hosts
+
       - name: Generate documentation indices
         working-directory: _tools/generator
+        env:
+          DEPLOY_SSH_PORT: ${{ vars.DEPLOY_SSH_PORT || 22 }}
+          DEPLOY_SSH_USER: ${{ vars.DEPLOY_SSH_USER }}
+          DEPLOY_SSH_HOST: ${{ vars.DEPLOY_SSH_HOST }}
+          DEPLOY_TARGET_PATH: ${{ vars.DEPLOY_TARGET_PATH }}
         run: php generate.php
 
       - name: Remove internal tools before deploy

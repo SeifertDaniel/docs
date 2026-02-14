@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Docs\Generator;
 
+use InvalidArgumentException;
+
 final class SemVersion
 {
     private int $major;
@@ -31,7 +33,7 @@ final class SemVersion
         //  x.y.z        ? x.y.0.z
         //  x.y.z.p      ? x.y.z.p
         if (!preg_match('/^(\d+)\.(\d+)\.(\d+)(?:\.(\d+))?$/', $version, $m)) {
-            throw new \InvalidArgumentException("Invalid version string: {$version}");
+            throw new InvalidArgumentException(sprintf("Invalid version string: %s", $version));
         }
 
         $major = (int) $m[1];

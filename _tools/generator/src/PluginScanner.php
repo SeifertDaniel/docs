@@ -3,17 +3,16 @@ declare(strict_types=1);
 
 namespace Docs\Generator;
 
+use Docs\Generator\StructureProvider\StructureProvider;
+use InvalidArgumentException;
+
 final class PluginScanner
 {
     private string $root;
 
-    public function __construct(string $root)
-    {
-        if (!is_dir($root)) {
-            throw new \RuntimeException("Invalid root directory: {$root}");
-        }
-        $this->root = rtrim($root, DIRECTORY_SEPARATOR);
-    }
+    public function __construct(
+        private StructureProvider $provider
+    ) {}
 
     /**
      * @return array<string, list<SemVersion>> [pluginSlug => versions(sorted desc)]
@@ -22,32 +21,28 @@ final class PluginScanner
     {
         $plugins = [];
 
-        foreach (scandir($this->root) as $entry) {
-            if ($entry === '.' || $entry === '..') {
-                continue;
-            }
+        foreach ($this->provider->getStructure() as $slug => $versions) {
 
-            if (in_array($entry[0], ['.git'], true) || $entry[0] === '_') {
-                continue;
-            }
+            $semVersions = [];
 
-            $pluginPath = $this->root . DIRECTORY_SEPARATOR . $entry;
-            if (!is_dir($pluginPath)) {
-                continue;
-            }
-
-            $versions = $this->scanVersions($pluginPath);
-            if ($versions === []) {
-                continue;
+            foreach ($versions as $version) {
+                try {
+                    $semVersions[] = SemVersion::fromString($version);
+                } catch (InvalidArgumentException) {
+                    continue;
+                }
             }
 
             usort(
-                $versions,
+                $semVersions,
                 fn (SemVersion $a, SemVersion $b) => $b->compare($a)
             );
 
-            $plugins[$entry] = $versions;
+            if ($semVersions !== []) {
+                $plugins[$slug] = $semVersions;
+            }
         }
+
 
         return $plugins;
     }
@@ -71,7 +66,7 @@ final class PluginScanner
 
             try {
                 $versions[] = SemVersion::fromString($dir);
-            } catch (\InvalidArgumentException) {
+            } catch (InvalidArgumentException) {
                 continue;
             }
         }

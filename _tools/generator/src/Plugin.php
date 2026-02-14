@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Docs\Generator;
 
+use DateTimeImmutable;
+
 final class Plugin
 {
     public string $slug;
@@ -12,7 +14,7 @@ final class Plugin
     public array $versions;
 
     public SemVersion $latest;
-    public ?\DateTimeImmutable $updatedAt;
+    public ?DateTimeImmutable $updatedAt;
 
     /**
      * @param list<SemVersion> $versions
@@ -21,7 +23,7 @@ final class Plugin
         string $slug,
         string $name,
         array $versions,
-        ?\DateTimeImmutable $updatedAt
+        ?DateTimeImmutable $updatedAt
     ) {
         $this->slug = $slug;
         $this->name = $name;
