@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Docs\Generator\MetadataBatchProvider;
@@ -21,11 +20,19 @@ final class RemoteMetadataProvider implements MetadataProvider
     {
         $command = $this->buildCommand();
 
+        // debug
+        fwrite(STDOUT, "---- Command ----\n");
+        fwrite(STDOUT, $this->sshBaseCommand . ' ' . escapeshellarg($command)."\n");
+
         exec($this->sshBaseCommand . ' ' . escapeshellarg($command), $output, $exit);
 
         if ($exit !== 0) {
             throw new RuntimeException('Failed fetching remote metadata');
         }
+
+        // debug
+        fwrite(STDOUT, "---- RAW METADATA OUTPUT ----\n");
+        fwrite(STDOUT, implode("\n", $output) . "\n");
 
         return $this->parseStream(implode("\n", $output));
     }
