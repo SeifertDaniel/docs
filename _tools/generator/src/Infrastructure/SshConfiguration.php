@@ -5,11 +5,11 @@ namespace Docs\Generator\Infrastructure;
 
 use RuntimeException;
 
-final class SshConfiguration
+final readonly class SshConfiguration
 {
     public function __construct(
-        public readonly string $sshBaseCommand,
-        public readonly string $remoteRoot
+        public string $sshBaseCommand,
+        public string $remoteRoot
     ) {}
 
     public static function fromEnvironment(): self

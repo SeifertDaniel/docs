@@ -12,11 +12,11 @@ use Docs\Generator\StructureProvider\RemoteSshProvider;
 use RuntimeException;
 use Throwable;
 
-final class DocumentationGenerator
+final readonly class DocumentationGenerator
 {
     public function __construct(
         private SshConfiguration $ssh,
-        private string $outputRoot
+        private string           $outputRoot
     ) {}
 
     public function run(): void

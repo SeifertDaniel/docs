@@ -13,8 +13,8 @@ final class DocumentationRenderer
     private Environment $twig;
 
     public function __construct(
-        private string $outputRoot,
-        private DateTimeImmutable $now
+        private readonly string   $outputRoot,
+        private readonly DateTimeImmutable $now
     ) {
         $loader = new FilesystemLoader(__DIR__ . '/../../templates/twig');
         $this->twig = new Environment($loader, [

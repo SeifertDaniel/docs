@@ -6,7 +6,7 @@ namespace Docs\Generator;
 use Docs\Generator\StructureProvider\StructureProvider;
 use InvalidArgumentException;
 
-final class PluginScanner
+final readonly class PluginScanner
 {
     public function __construct(
         private StructureProvider $provider

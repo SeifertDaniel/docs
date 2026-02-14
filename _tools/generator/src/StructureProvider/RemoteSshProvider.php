@@ -5,7 +5,7 @@ namespace Docs\Generator\StructureProvider;
 
 use RuntimeException;
 
-final class RemoteSshProvider implements StructureProvider
+final readonly class RemoteSshProvider implements StructureProvider
 {
     public function __construct(
         private string $sshBaseCommand,

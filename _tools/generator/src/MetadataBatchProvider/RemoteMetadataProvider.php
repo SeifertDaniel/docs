@@ -9,7 +9,7 @@ use RuntimeException;
 use Symfony\Component\Yaml\Yaml;
 use Throwable;
 
-final class RemoteMetadataProvider implements MetadataProvider
+final readonly class RemoteMetadataProvider implements MetadataProvider
 {
     public function __construct(
         private string $sshBaseCommand,
