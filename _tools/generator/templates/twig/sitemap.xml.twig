@@ -7,18 +7,45 @@
     </url>
 
     {% for plugin in plugins %}
+
+        {# Plugin-Übersicht #}
         <url>
             <loc>{{ baseUrl }}/{{ plugin.slug }}/</loc>
-            {% if plugin.updatedAt is not null %}
-                <lastmod>{{ plugin.updatedAt|date('Y-m-d') }}</lastmod>
-            {% endif %}
+            <lastmod>
+                {% if plugin.updatedAt is not null %}
+                    {{ plugin.updatedAt|date('Y-m-d') }}
+                {% else %}
+                    {{ generatedAt|date('Y-m-d') }}
+                {% endif %}
+            </lastmod>
         </url>
+
+        {# Latest #}
         <url>
             <loc>{{ baseUrl }}/{{ plugin.slug }}/latest/</loc>
-            {% if plugin.updatedAt is not null %}
-                <lastmod>{{ plugin.updatedAt|date('Y-m-d') }}</lastmod>
-            {% endif %}
+            <lastmod>
+                {% if plugin.updatedAt is not null %}
+                    {{ plugin.updatedAt|date('Y-m-d') }}
+                {% else %}
+                    {{ generatedAt|date('Y-m-d') }}
+                {% endif %}
+            </lastmod>
         </url>
+
+        {# Alle Versionen #}
+        {% for version in plugin.versions %}
+            <url>
+                <loc>{{ baseUrl }}/{{ plugin.slug }}/{{ version }}/</loc>
+                <lastmod>
+                    {% if plugin.updatedAt is not null %}
+                        {{ plugin.updatedAt|date('Y-m-d') }}
+                    {% else %}
+                        {{ generatedAt|date('Y-m-d') }}
+                    {% endif %}
+                </lastmod>
+            </url>
+        {% endfor %}
+
     {% endfor %}
 
 </urlset>
