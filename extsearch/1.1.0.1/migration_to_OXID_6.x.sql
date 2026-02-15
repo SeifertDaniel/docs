@@ -1,1 +1,0 @@
-UPDATE d3_extsearch_statisticlog SET oxshopid = 1 WHERE oxshopid = 'oxbaseshop';
